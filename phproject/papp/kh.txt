@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Person</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F6FDC3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    
+        form {
+            width: 30%;
+            background-color: #FFCF96;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    
+        label {
+            text-align: center;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+    
+        input[type="text"] {
+            margin-left: 8%;
+            width: 400px;
+            padding: 12px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s ease;
+        }
+    
+        input[type="text"]:focus {
+            border-color: #007bff;
+        }
+    
+        input[type="submit"] {
+            width: 20%;
+            margin-left: 38%;
+            background-color: #FC6736;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        input[type="submit"]:hover {
+            background-color: #41241a;
+        }
+    
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        form {
+            animation: slideIn 0.5s ease;
+        }
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            color: #333;
+            
+            margin: 30px 50px 0px 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Edit Person</h1>
+    <form method="POST">
+        {% csrf_token %}
+        
+        <label for="name">Name</label>
+        <input type="text" name="name" value="{{ persons.name }}" required><br>
+
+        <label for="number">Number</label>
+        <input type="text" name="num" value="{{ persons.number }}" required><br>
+
+        <label for="place">Place</label>
+        <input type="text" name="place" value="{{ persons.place }}" required><br>
+
+        <button type="submit">Save Changes</button>
+    </form>
+</body>
+</html>
